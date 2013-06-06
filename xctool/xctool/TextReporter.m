@@ -663,6 +663,17 @@
   }
 }
 
+- (void)analyzerResult:(NSDictionary *)event
+{
+  [self.reportWriter disableIndent];
+  [self.reportWriter printLine:@"%@:%@:%@: %@",
+   event[kReporter_AnalyzerResult_FileKey],
+   event[kReporter_AnalyzerResult_LineKey],
+   event[kReporter_AnalyzerResult_ColumnKey],
+   event[kReporter_AnalyzerResult_DescriptionKey]];
+  [self.reportWriter enableIndent];
+}
+
 @end
 
 @implementation PrettyTextReporter
